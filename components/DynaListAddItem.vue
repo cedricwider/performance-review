@@ -2,9 +2,9 @@
   <form @submit.prevent="onSubmit">
     <div class="input-form">
       <b-field class="space-greedy">
-        <b-input type="text" v-model="item"></b-input>
+        <b-input type="text" v-model="item" size="is-large"></b-input>
       </b-field>
-      <b-button id="add-button" class="space-ascetic" type="is-primary" @click="onSubmit">Add</b-button>
+      <b-button id="add-button" class="space-ascetic" size="is-large" type="is-primary" @click="onSubmit">Add</b-button>
     </div>
   </form>
 </template>
@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('onSubmit')
       this.$emit('update', this.item)
       this.item = null
     },

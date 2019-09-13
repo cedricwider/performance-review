@@ -1,14 +1,25 @@
 export const state = () => ({
-  performanceReview: {
-    firstName: null,
-    lastName: null,
-    seniority: null,
-    achievements: [],
-    strengths: [],
-    opportunities: [],
-    behaviour: {},
+  firstName: null,
+  lastName: null,
+  seniority: null,
+  achievements: [],
+  strengths: [],
+  opportunities: [],
+  behaviour: {
+    communication: 2,
+    execution: 2,
+    implementation: 2,
+    teamwork: 2,
+    innovation: 2,
   },
 })
+
+export const getters = {
+  getAchievements: state => state.achievements.slice(),
+  getStrengths: state => state.strengths.slice(),
+  getOpportunities: state => state.opportunities.slice(),
+  getBehaviour: state => Object.assign({}, state.behaviour),
+}
 
 export const mutations = {
   setFirstName(state, firstName) {
@@ -20,11 +31,20 @@ export const mutations = {
   setSeniority(state, seniority) {
     state.seniority = seniority
   },
+  setAchievements(state, achievements) {
+    state.achievements = achievements
+  },
   addAchievement(state, achievement) {
     state.achievements.push(achievement)
   },
+  setStrengths(state, strengths) {
+    state.strengths = strengths
+  },
   addStrength(state, strength) {
     state.strengths.push(strength)
+  },
+  setOpportunities(state, opportunities) {
+    state.opportunities = opportunities
   },
   addOpportunity(state, opportunity) {
     state.opportunities.push(opportunity)
@@ -46,5 +66,8 @@ export const mutations = {
     if (index === -1) return
 
     state.opportunities.splice(index, 1)
+  },
+  setBehaviour(state, behaviour) {
+    state.behaviour = behaviour
   },
 }

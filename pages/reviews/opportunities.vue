@@ -23,15 +23,27 @@
 <script>
 import DynaList from '../../components/DynaList'
 import PrevNextButtonBar from '../../components/PrevNextButtonBar'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     DynaList,
     PrevNextButtonBar,
   },
+  computed: {
+    ...mapGetters({ storedOpportunities: 'getOpportunities' }),
+    opportunities: {
+      get() {
+        return this.storedOpportunities || []
+      },
+      set(value) {
+        this.$store.commit('setOpportunities', value)
+      },
+    },
+  },
   data() {
     return {
       sectionTitle: 'Opportunities',
-      opportunities: [],
     }
   },
 }

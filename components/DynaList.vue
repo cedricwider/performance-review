@@ -8,7 +8,7 @@
       <DynaListAddItem @update="addItem"></DynaListAddItem>
       <DynaListEmpty v-if="items.length === 0"></DynaListEmpty>
       <ul>
-        <DynaListItem v-for="(item, index) in reverseItems" :key="index" @delete="items.splice(index, 1)">{{
+        <DynaListItem v-for="(item, index) in reverseItems" :key="index" @delete="deleteItem(index)">{{
           item
         }}</DynaListItem>
       </ul>
@@ -44,7 +44,7 @@ export default {
   model: {
     // https://dev.to/vue-storefront/vue-during-coffee-break-using-v-model-with-custom-components-3bo9
     prop: 'items',
-    event: 'changed',
+    event: 'change',
   },
   computed: {
     reverseItems() {
@@ -54,6 +54,11 @@ export default {
   methods: {
     addItem(item) {
       this.items.push(item)
+      this.$emit('change', this.items)
+    },
+    deleteItem(index) {
+      this.items.splice(index, 1)
+      this.$emit('change', this.items)
     },
   },
 }

@@ -22,15 +22,26 @@
 <script>
 import DynaList from '../../components/DynaList'
 import PrevNextButtonBar from '../../components/PrevNextButtonBar'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     DynaList,
     PrevNextButtonBar,
   },
+  computed: {
+    ...mapGetters({ storedStrengths: 'getStrengths' }),
+    strengths: {
+      get() {
+        return this.storedStrengths || []
+      },
+      set(value) {
+        this.$store.commit('setStrengths', value)
+      },
+    },
+  },
   data() {
     return {
       sectionTitle: 'Strengths',
-      strengths: [],
     }
   },
 }

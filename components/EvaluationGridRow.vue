@@ -5,7 +5,7 @@
       <div class="description column is-four-fifths">{{ description }}</div>
       <div class="column">
         <b-field>
-          <b-input type="number" min="1" max="3" v-model="value" size="is-large"></b-input>
+          <b-input type="number" min="1" max="3" size="is-large" :value="value" @input="onChange"></b-input>
         </b-field>
       </div>
     </div>
@@ -19,6 +19,10 @@ export default {
       type: String,
       required: true,
     },
+    identifier: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -26,6 +30,11 @@ export default {
     value: {
       type: Number,
       required: true,
+    },
+  },
+  methods: {
+    onChange(value) {
+      this.$emit('change', this.identifier, value)
     },
   },
 }

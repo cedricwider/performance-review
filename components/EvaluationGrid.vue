@@ -9,8 +9,10 @@
         v-for="facet in facets"
         :key="facet.id"
         :title="facet.title"
+        :identifier="facet.id"
         :description="facet.description"
         :value="facet.value"
+        @change="onChange"
       ></EvaluationGridRow>
     </div>
   </div>
@@ -38,40 +40,49 @@ export default {
       facets: [
         {
           id: 'communication',
-          value: 2,
+          value: this.$store.state.behaviour.communication || 2,
           title: 'Stakeholder Communication',
           description:
             "Proactive, Continuous Feedback Loop. Ask Questions. Understand stakeholder's point of view. Fight for Simplicity",
         },
         {
           id: 'execution',
-          value: 2,
+          value: this.$store.state.behaviour.execution || 2,
           title: 'Project Execution',
           description:
             'Structured and efficient. Visible and planned with work broken down into tasks. Facilitate decision making. Take responsibility for the team.',
         },
         {
           id: 'implementation',
-          value: 2,
+          value: this.$store.state.behaviour.implementation || 2,
           title: 'Technical Implementation',
           description:
             'Follow best practices. Take responsibility for the solution. Write tests. Release Management. Develop solutions that meet the requirements. Demand design sessions.',
         },
         {
           id: 'teamwork',
-          value: 2,
+          value: this.$store.state.behaviour.teamwork || 2,
           title: 'Teamwork',
           description:
             'Open dialogue. Share knowledge. Value diverse personalities. Drive team values and coach others.',
         },
         {
           id: 'innovation',
-          value: 2,
+          value: this.$store.state.behaviour.innovation || 2,
           title: 'Innovation',
           description: 'Challenge and improve tools, workflows and processes.',
         },
       ],
     }
+  },
+  methods: {
+    onChange(facetId, facetValue) {
+      let facet = this.facets.find(facet => facet.id === facetId)
+      facet.value = parseInt(facetValue)
+      let updateBehaviour = {}
+      this.facets.forEach(facet => (updateBehaviour[facet.id] = facet.value))
+      this.$store.commit('setBehaviour', updateBehaviour)
+    },
   },
 }
 </script>

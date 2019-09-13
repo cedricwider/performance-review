@@ -1,11 +1,11 @@
 <template>
   <section class="finish">
-    <hero>
-      <hero-body>
+    <div class="hero">
+      <div class="hero-body">
         <h1 class="title is-1">Thank you!!</h1>
         <p>You may go now</p>
-      </hero-body>
-    </hero>
+      </div>
+    </div>
   </section>
 </template>
 

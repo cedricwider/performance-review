@@ -22,15 +22,26 @@
 <script>
 import DynaList from '../../components/DynaList'
 import PrevNextButtonBar from '../../components/PrevNextButtonBar'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     DynaList,
     PrevNextButtonBar,
   },
+  computed: {
+    ...mapGetters({ achievements: 'getAchievements' }),
+    workAchievements: {
+      get() {
+        return this.achievements || []
+      },
+      set(value) {
+        this.$store.commit('setAchievements', value)
+      },
+    },
+  },
   data() {
     return {
       sectionTitle: 'Work Achievements',
-      workAchievements: [],
     }
   },
 }
