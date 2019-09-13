@@ -19,7 +19,7 @@
           <div class="column">
             <b-field label="Seniority">
               <b-select size="is-large" expanded v-model="seniority">
-                <option v-for="(role, index) in roles" :key="index" value="role.value">{{ role.label }}</option>
+                <option v-for="(role, index) in roles" :key="index" :value="role.value">{{ role.label }}</option>
               </b-select>
             </b-field>
           </div>
@@ -32,6 +32,8 @@
 
 <script>
 import PrevNextButtonBar from '../../components/PrevNextButtonBar'
+import { MapMutations } from 'vuex'
+
 export default {
   components: {
     PrevNextButtonBar,
@@ -61,6 +63,27 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    save() {
+      console.log('Saving name state')
+      this.$store.commit('setFirstName', this.firstName)
+      this.$store.commit('setLastName', this.lastName)
+      this.$store.commit('setSeniority', this.seniority)
+    },
+  },
+
+  beforeRouteLeave(to, from, next) {
+    console.log('befoureRouteLeave')
+    this.save()
+    next()
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.firstName = vm.$store.state.firstName
+      vm.lastName = vm.$store.state.lastName
+      vm.seniority = vm.$store.state.seniority
+    })
   },
 }
 </script>
