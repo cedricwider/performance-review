@@ -1,31 +1,34 @@
 <template>
   <section class="name-form">
-    <div class="container">
-      <form @submit.prevent="onSubmit">
-        <div class="columns">
-          <div class="column">
-            <b-field label="First Name">
-              <b-input type="text" size="is-large" v-model="firstName"></b-input>
-            </b-field>
+    <div class="hero">
+      <div class="hero-body">
+        <h2 class="title is-2">Personal Data</h2>
+        <form @submit.prevent="onSubmit">
+          <div class="columns">
+            <div class="column">
+              <b-field label="First Name">
+                <b-input type="text" size="is-large" v-model="firstName"></b-input>
+              </b-field>
+            </div>
+            <div class="column">
+              <b-field label="Last Name">
+                <b-input type="text" size="is-large" v-model="lastName"></b-input>
+              </b-field>
+            </div>
           </div>
-          <div class="column">
-            <b-field label="Last Name">
-              <b-input type="text" size="is-large" v-model="lastName"></b-input>
-            </b-field>
-          </div>
-        </div>
 
-        <div class="columns">
-          <div class="column">
-            <b-field label="Seniority">
-              <b-select size="is-large" expanded v-model="seniority">
-                <option v-for="(role, index) in roles" :key="index" :value="role.value">{{ role.label }}</option>
-              </b-select>
-            </b-field>
+          <div class="columns">
+            <div class="column">
+              <b-field label="Seniority">
+                <b-select size="is-large" expanded v-model="seniority">
+                  <option v-for="(role, index) in roles" :key="index" :value="role.value">{{ role.label }}</option>
+                </b-select>
+              </b-field>
+            </div>
           </div>
-        </div>
-      </form>
-      <PrevNextButtonBar prev="/reviews" next="/reviews/work" :disabled="!formComplete"></PrevNextButtonBar>
+        </form>
+        <PrevNextButtonBar prev="/reviews" next="/reviews/work" :disabled="!formComplete"></PrevNextButtonBar>
+      </div>
     </div>
   </section>
 </template>

@@ -1,6 +1,12 @@
-body {
-  /* font-family: 'Fira Sans', sans-serif; */
-  font-family: 'Lato', sans-serif;
+body, html #__nuxt, #__layout{
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .container {
