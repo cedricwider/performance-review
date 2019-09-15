@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const state = () => ({
   firstName: null,
   lastName: null,
@@ -69,5 +71,11 @@ export const mutations = {
   },
   setBehaviour(state, behaviour) {
     state.behaviour = behaviour
+  },
+}
+
+export const actions = {
+  storeReport(_, report) {
+    return axios.post('/functions/processReview', report)
   },
 }
