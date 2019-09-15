@@ -77,6 +77,7 @@ export const mutations = {
 export const actions = {
   storeReport(_, report) {
     report.code = process.env.AZURE_FUNCTION_CODE;
-    return axios.post('/azure/processReview', report);
+    const url = `/azure/processReview?code=${process.env.AZURE_FUNCTION_CODE}`;
+    return axios.post(url, report);
   },
 };
