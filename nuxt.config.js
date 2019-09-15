@@ -26,7 +26,9 @@ export default {
    */
   proxy: {
     '/functions': {
-      target: process.env.API_ENDPOINT || 'http://localhost:7071',
+      target:
+        process.env.API_ENDPOINT ||
+        'https://performancereviews.azurewebsites.net/api/processReview?code=q1avJaJFhi8IXxJw/vPVC7K6aYezdCqUPteR0NMw5uCmXTgsukpcWQ==',
       pathRewrite: {
         '^/functions': '/api',
       },
