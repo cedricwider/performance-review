@@ -27,10 +27,10 @@ export default {
    ** Proxy rewrite api requests
    */
   proxy: {
-    '/functions': {
+    '/azure': {
       target: process.env.API_ENDPOINT || 'https://performancereviews.azurewebsites.net',
       pathRewrite: {
-        '^/functions': '/api',
+        '^/azure': '/api',
       },
     },
   },
