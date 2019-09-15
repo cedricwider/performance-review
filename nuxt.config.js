@@ -22,6 +22,17 @@ export default {
    */
   css: ['assets/main.css'],
   /*
+   ** Proxy rewrite api requests
+   */
+  proxy: {
+    '/functions': {
+      target: process.env.API_ENDPOINT || 'http://localhost:7071',
+      pathRewrite: {
+        '^/functions': '/api',
+      },
+    },
+  },
+  /*
    ** Plugins to load before mounting the App
    */
   plugins: [],
@@ -35,6 +46,8 @@ export default {
   modules: [
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
    ** Build configuration
