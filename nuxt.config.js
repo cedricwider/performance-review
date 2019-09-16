@@ -10,8 +10,10 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Fira+Sans|Lato&display=swap' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Fira+Sans|Lato&display=swap' },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -21,19 +23,6 @@ export default {
    ** Global CSS
    */
   css: ['assets/main.css'],
-  /*
-   ** Proxy rewrite api requests
-   */
-  proxy: {
-    '/functions': {
-      target:
-        process.env.API_ENDPOINT ||
-        'https://performancereviews.azurewebsites.net/api/processReview?code=q1avJaJFhi8IXxJw/vPVC7K6aYezdCqUPteR0NMw5uCmXTgsukpcWQ==',
-      pathRewrite: {
-        '^/functions': '/api',
-      },
-    },
-  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -49,7 +38,6 @@ export default {
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
   ],
   /*
    ** Build configuration
@@ -60,4 +48,4 @@ export default {
      */
     extend(config, ctx) {},
   },
-}
+};
