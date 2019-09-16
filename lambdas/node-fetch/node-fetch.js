@@ -1,11 +1,12 @@
 /* eslint-disable */
-const fetch = require('node-fetch')
 const moment = require('moment')
 const dfs = require('dropbox-fs')({
   apiKey: process.env.DROPBOX_ACCESS_TOKEN,
 })
 
 exports.handler = async function(event, context, callback) {
+  const accessToken = process.env.DROPBOX_ACCESS_TOKEN
+  console.log('AccessToken: ', accessToken)
   if (!event.body) {
     return callback(null, { statusCode: 400, body: error() })
   }
