@@ -1,6 +1,5 @@
 <template>
-  <div class="application">
-    <Navigation></Navigation>
+  <div class="application background-image is-centered">
     <section class="main-content">
       <div class="container">
         <div class="nuxt-content">
@@ -11,37 +10,32 @@
   </div>
 </template>
 
-<script>
-import Navigation from '../components/Navigation.vue'
-
-export default {
-  components: {
-    Navigation,
-  },
-}
-</script>
+<script></script>
 
 <style lang="scss">
 @import 'assets/colors.scss';
 @import 'assets/fonts.scss';
 
-// ...update Bulma variables
-$family-primary: $normal-font;
-$family-secondary: $highlight-font;
-$family-sans-serif: $normal-font;
-$primary: $rosy-brown;
-$white: $almost-white;
-$black: $almost-black;
-$link: $dim-gray;
-
 .application {
   min-height: 100%;
-  background-color: $baby-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-image {
+  background-image: url('../assets/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-content {
+  width: 100%;
 }
 
 .nuxt-content {
-  margin-top: calc(50vh - 22rem);
-  background: white;
+  background: $yellow-light-2;
   -webkit-box-shadow: 11px 12px 8px 0px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: 11px 12px 8px 0px rgba(0, 0, 0, 0.33);
   box-shadow: 11px 12px 8px 0px rgba(0, 0, 0, 0.33);

@@ -1,8 +1,8 @@
 <template>
   <li>
     <div class="level outline">
-      <div class="level-left">
-        <p>
+      <div class="level-left max-width">
+        <p class="content">
           <slot></slot>
         </p>
       </div>
@@ -26,13 +26,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// TODO: Style colors (outline and li:hover)
+@import '~/assets/colors.scss';
 li {
   margin-bottom: 0.5rem;
+}
+.content {
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+.max-width {
+  max-width: 100%;
 }
 .outline {
   padding: 1.5rem;
   border-radius: 5px;
-  border: 1px black solid;
+  border: 1px $coral-tree solid;
 }
 </style>

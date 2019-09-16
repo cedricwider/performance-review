@@ -1,0 +1,95 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import '~bulma/sass/utilities/_all';
+
+// ...update Bulma variables
+$family-primary: $normal-font;
+$family-secondary: $highlight-font;
+$family-sans-serif: $normal-font;
+$primary: $coral-tree;
+$white: $pot-pourri;
+$black: $eggplant;
+$link: $dim-gray;
+$light: $pale-slate;
+
+
+
+
+// Set your colors
+$primary: $coral-tree;
+$primary-invert: findColorInvert($coral-tree);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert),
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+
+
+
+body, html #__nuxt, #__layout{
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  transition: all .5s cubic-bezier(.55,0,.1,1);
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s
+}
+.page-enter, .page-leave-active {
+  opacity: 0
+}
+
+.bounce-enter-active {
+  animation: bounce-in .8s;
+}
+.bounce-leave-active {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% { transform: scale(0) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(1) }
+}
+@keyframes bounce-out {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(0) }
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-30px, 0);
+}
+
+@import '~bulma';
+@import '~buefy/src/scss/buefy'
