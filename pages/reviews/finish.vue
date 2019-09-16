@@ -7,7 +7,7 @@
           <hr />
           <div class="columns">
             <div class="column">
-              <nuxt-link class="button is-secondary is-large" :to="opportunities">Back</nuxt-link>
+              <nuxt-link class="button is-secondary is-large" to="opportunities">Back</nuxt-link>
             </div>
             <div class="column">
               <b-button type="primary" class="button is-primary is-large is-pulled-right" @click="processReport"
