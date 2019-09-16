@@ -1,0 +1,4 @@
+  command = "yarn generate"
+[build]
+  functions = "lambdas"
+  publish = "dist"

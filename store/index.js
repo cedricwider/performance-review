@@ -76,6 +76,6 @@ export const mutations = {
 
 export const actions = {
   storeReport(_, report) {
-    return axios.post('/azure/processReview', report);
+    return axios.post('/.netlify/functions/node-fetch', report);
   },
 };
