@@ -28,6 +28,24 @@ export default {
    */
   plugins: [],
   /*
+   ** Proxy rewrite api requests
+   * Only works in development!!
+   * CAUTION: This bypasses netlify functions.
+   * Make sure to comment this out and start netlify functions like so:
+   * 1.) cd lambdas/
+   * 2.) yarn generate
+   * 3.) netlify dev
+   */
+  proxy: {
+    '/.netlify': {
+      target: 'http://localhost:7071',
+      pathRewrite: {
+        '^/.netlify/functions/proxy':
+          '/api/processReview?code=q1avJaJFhi8IXxJw/vPVC7K6aYezdCqUPteR0NMw5uCmXTgsukpcWQ==',
+      },
+    },
+  },
+  /*
    ** Nuxt.js dev-modules
    */
   buildModules: [],
@@ -38,6 +56,7 @@ export default {
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
    ** Build configuration

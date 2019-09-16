@@ -1,27 +1,22 @@
-/* eslint-disable */
 const moment = require('moment')
 const dfs = require('dropbox-fs')({
   apiKey: process.env.DROPBOX_ACCESS_TOKEN,
 })
 
-exports.handler = async function(event, context, callback) {
-  const accessToken = process.env.DROPBOX_ACCESS_TOKEN
-  console.log('AccessToken: ', accessToken)
-  if (!event.body) {
-    return callback(null, { statusCode: 400, body: error() })
+module.exports = async function(context, req) {
+  if (!req.body) {
+    return error(context)
   }
 
-  const review = JSON.parse(event.body)
+  const review = req.body
   await dfs.writeFile(toFilename(review), toMarkup(review), { encoding: 'utf-8' }, () => {})
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ status: '200', message: 'Success' }),
-  }
+  context.log('File uploaded!!!')
+  return JSON.stringify({ message: 'Success!' })
 }
 
-const error = () => {
-  return {
-    statusCode: 400,
+const error = context => {
+  context.res = {
+    status: 400,
     body: JSON.stringify({ error: 'invalid request', message: 'Please provide a properly formatted request' }),
   }
 }
