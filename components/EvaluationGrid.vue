@@ -4,6 +4,13 @@
       <h2 class="title is-2">{{ title }}</h2>
       <slot></slot>
     </div>
+    <div class="legend is-pulled-right">
+      <legend>
+        <small>
+          <p>1: Strive to improve, 2: fulfilled, 3: More than expected</p>
+        </small>
+      </legend>
+    </div>
     <div class="main-content">
       <EvaluationGridRow
         v-for="facet in facets"
@@ -13,6 +20,7 @@
         :description="facet.description"
         :value="facet.value"
         @change="onChange"
+        class="grid-row"
       ></EvaluationGridRow>
     </div>
   </div>
@@ -88,7 +96,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/colors.scss';
+
 .main-content {
   margin-top: 1.5rem;
+}
+.grid-row {
+  margin-top: 2rem;
+}
+legend {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: $coral-tree;
 }
 </style>
