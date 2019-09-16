@@ -11,6 +11,7 @@ module.exports = async function(context, req) {
   const review = req.body
   await dfs.writeFile(toFilename(review), toMarkup(review), { encoding: 'utf-8' }, () => {})
   context.log('File uploaded!!!')
+  return JSON.stringify({ message: 'Success!' })
 }
 
 const error = context => {
