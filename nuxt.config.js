@@ -25,12 +25,13 @@ export default {
   css: ['assets/main.css'],
   /*
    ** Proxy rewrite api requests
+   * for production use: https://performancereviews.azurewebsites.net
    */
   proxy: {
     '/azure': {
-      target: process.env.API_ENDPOINT || 'https://performancereviews.azurewebsites.net',
+      target: process.env.API_ENDPOINT || 'http://localhost:7071/api/processReview',
       pathRewrite: {
-        '^/azure': '/api',
+        '^/azure/processReview': `/api/processReview?code=${process.env.AZURE_FUNCTION_CODE}`,
       },
     },
   },
