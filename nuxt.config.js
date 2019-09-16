@@ -24,18 +24,6 @@ export default {
    */
   css: ['assets/main.css'],
   /*
-   ** Proxy rewrite api requests
-   * for production use: https://performancereviews.azurewebsites.net
-   */
-  proxy: {
-    '/azure': {
-      target: process.env.API_ENDPOINT || 'http://localhost:7071/api/processReview',
-      pathRewrite: {
-        '^/azure/processReview': `/api/processReview?code=${process.env.AZURE_FUNCTION_CODE}`,
-      },
-    },
-  },
-  /*
    ** Plugins to load before mounting the App
    */
   plugins: [],
@@ -50,7 +38,6 @@ export default {
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
   ],
   /*
    ** Build configuration
