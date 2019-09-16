@@ -1,4 +1,4 @@
-  command = "yarn generate"
 [build]
+  command = "yarn generate && cd lambdas/node-fetch && yarn install"
   functions = "lambdas"
   publish = "dist"
