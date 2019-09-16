@@ -29,9 +29,11 @@ export default {
    */
   proxy: {
     '/azure': {
-      target: process.env.API_ENDPOINT || 'http://localhost:7071/api/processReview',
+      // target: process.env.API_ENDPOINT || 'http://localhost:7071/api/processReview',
+      target: 'https://performancereviews.azurewebsites.net',
       pathRewrite: {
-        '^/azure/processReview': `/api/processReview?code=${process.env.AZURE_FUNCTION_CODE}`,
+        // '^/azure/processReview': `/api/processReview?code=${process.env.AZURE_FUNCTION_CODE}`,
+        '^/azure/processReview': '/api/processReview?code=q1avJaJFhi8IXxJw/vPVC7K6aYezdCqUPteR0NMw5uCmXTgsukpcWQ==',
       },
     },
   },
