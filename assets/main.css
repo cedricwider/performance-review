@@ -3,6 +3,7 @@ body, html #__nuxt, #__layout{
   padding: 0;
   border: none;
   height: 100vh;
+  width: 100vw;
 }
 
 * {
