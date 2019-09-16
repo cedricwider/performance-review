@@ -12,7 +12,9 @@ exports.handler = async function(event, context, callback) {
   }
 
   const review = JSON.parse(event.body)
-  await dfs.writeFile(toFilename(review), toMarkup(review), { encoding: 'utf-8' }, () => {})
+  await dfs.writeFile(toFilename(review), toMarkup(review), { encoding: 'utf-8' }, error => {
+    console.log('ERROR occured while writing file.', error)
+  })
   return {
     statusCode: 200,
     body: JSON.stringify({ status: '200', message: 'Success' }),
