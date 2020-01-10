@@ -43,45 +43,50 @@ export default {
   components: {
     EvaluationGridRow,
   },
-  data() {
-    return {
-      facets: [
+  computed: {
+    role() {
+      const seniority = this.$store.seniority || 'professional'
+      console.log(`Seniority: ${seniority}`)
+      console.log(`Roles: ${this.$store.state.roles.roles}`)
+      return this.$store.state.roles.roles[seniority]
+    },
+    facets() {
+      return [
         {
           id: 'communication',
           value: this.$store.state.behaviour.communication || 2,
           title: 'Stakeholder Communication',
-          description:
-            "Proactive, Continuous Feedback Loop. Ask Questions. Understand stakeholder's point of view. Fight for Simplicity",
+          description: this.role.communication.join('. '),
         },
         {
           id: 'execution',
           value: this.$store.state.behaviour.execution || 2,
           title: 'Project Execution',
-          description:
-            'Structured and efficient. Visible and planned with work broken down into tasks. Facilitate decision making. Take responsibility for the team.',
+          description: this.role.execution.join('. '),
         },
         {
           id: 'implementation',
           value: this.$store.state.behaviour.implementation || 2,
           title: 'Technical Implementation',
-          description:
-            'Follow best practices. Take responsibility for the solution. Write tests. Release Management. Develop solutions that meet the requirements. Demand design sessions.',
+          description: this.role.implementation.join('. '),
         },
         {
           id: 'teamwork',
           value: this.$store.state.behaviour.teamwork || 2,
           title: 'Teamwork',
-          description:
-            'Open dialogue. Share knowledge. Value diverse personalities. Drive team values and coach others.',
+          description: this.role.teamwork.join('. '),
         },
         {
           id: 'innovation',
           value: this.$store.state.behaviour.innovation || 2,
           title: 'Innovation',
-          description: 'Challenge and improve tools, workflows and processes.',
+          description: this.role.innovation.join('. '),
         },
-      ],
-    }
+      ]
+    },
+  },
+  data() {
+    return {}
   },
   methods: {
     onChange(facetId, facetValue) {
