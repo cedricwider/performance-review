@@ -12,7 +12,7 @@ exports.handler = async function(event, context, callback) {
     statusCode = response.status
     body = response.body || JSON.stringify({ message: 'Success!' })
   } catch (error) {
-    console.log('Error while proxying: ', e)
+    console.log('Error while proxying: ', error)
     statusCode = error.response.status || 500
     body = errorMessage = error.response.body || error.message || JSON.stringify({ message: 'Error occured' })
   }
