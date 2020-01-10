@@ -37,6 +37,17 @@ are not redirected.
 
 Then connect the browser to http://localhost:8888 (instead of 3000).
 
+
+### Running azure functions locally
+
+In order to start azure functions locally, make sure to have the azure CLI
+installed. Then follow these steps:
+
+```bash
+$ cd functions/
+$ func start
+```
+
 ## Environment Variables
 
 Export the following environment variables before starting the server:
