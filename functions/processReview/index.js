@@ -30,6 +30,7 @@ const toMarkup = review => {
   markup += `= Performance Review ${review.firstName} ${review.lastName} =\n`
   markup += `\n`
   markup += `*Date:* ${moment().format('YYYY-MM-DD')}\n`
+  markup += `*Seniority:* ${review.seniority}\n`
   markup += '\n'
   markup += '\n'
   markup += '== Work Achievements ==\n'
